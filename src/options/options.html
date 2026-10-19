@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Salesforce Record Lookup Settings</title>
+  <link rel="stylesheet" href="../shared.css">
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <main>
+    <h1>Salesforce Record Lookup Settings</h1>
+
+    <section>
+      <h2>Orgs</h2>
+      <p class="help">
+        When you open the extension from a Salesforce tab, it uses that tab's org automatically.
+        Saved orgs are used everywhere else, starting with the default.
+      </p>
+      <table id="org-table" hidden>
+        <thead>
+          <tr><th>Name</th><th>Address</th><th>Type</th><th>Interface</th><th>Default</th><th></th></tr>
+        </thead>
+        <tbody id="org-rows"></tbody>
+      </table>
+      <p id="no-orgs" class="empty">No saved orgs yet.</p>
+
+      <form id="add-org" class="add-org" autocomplete="off">
+        <input id="org-address" type="text" spellcheck="false" required
+               aria-label="Org address"
+               placeholder="https://yourcompany.my.salesforce.com">
+        <input id="org-label" type="text" aria-label="Name (optional)" placeholder="Name (optional)">
+        <button type="submit">Add org</button>
+      </form>
+      <p class="help">Paste any URL from the org, its My Domain host name, or just the My Domain name.</p>
+      <p id="add-error" class="error" role="alert" hidden></p>
+    </section>
+
+    <section>
+      <h2>Behavior</h2>
+      <fieldset>
+        <legend>Open lookups in</legend>
+        <label><input type="radio" name="openIn" value="newTab"> A new tab</label>
+        <label><input type="radio" name="openIn" value="currentTab"> The current tab</label>
+      </fieldset>
+      <label class="check"><input type="checkbox" id="keep-history"> Remember my last 10 lookups</label>
+      <button id="clear-history" class="secondary small" type="button">Clear recent lookups</button>
+    </section>
+
+    <section>
+      <h2>Shortcuts</h2>
+      <p>Keyboard shortcut to open the popup: <kbd id="shortcut">Not set</kbd></p>
+      <button id="change-shortcut" class="secondary small" type="button">Change shortcut</button>
+      <p>
+        From the address bar: type <kbd>sf</kbd>, press <kbd>Space</kbd>, then enter a record ID,
+        Salesforce URL, or search term.
+      </p>
+    </section>
+
+    <section>
+      <h2>Privacy</h2>
+      <p>
+        Everything stays in this browser. Settings and recent lookups are kept in Chrome's local
+        extension storage and are not synced. The extension makes no network requests of its own and
+        includes no analytics. It can read the current tab's address only when you open it.
+      </p>
+    </section>
+
+    <p id="status" class="status" role="status"></p>
+  </main>
+  <script type="module" src="options.js"></script>
+</body>
+</html>

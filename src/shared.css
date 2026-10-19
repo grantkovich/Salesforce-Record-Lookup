@@ -1,0 +1,89 @@
+/* Colors and controls shared by the popup and options page. */
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --surface: #f4f6f8;
+  --border: #d5dbe1;
+  --text: #1b2733;
+  --muted: #5d6b78;
+  --accent: #1f5f8b;
+  --accent-hover: #174a6d;
+  --accent-text: #ffffff;
+  --danger: #b3261e;
+  --radius: 6px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1c2128;
+    --surface: #262d36;
+    --border: #3b4652;
+    --text: #e6edf3;
+    --muted: #9aa7b4;
+    --accent: #5aa3d6;
+    --accent-hover: #7bb6df;
+    --accent-text: #0d1a24;
+    --danger: #f2877f;
+  }
+}
+
+/* Set on body, not :root: Chrome gives extension pages body { font-size: 75% }. */
+body {
+  margin: 0;
+  font: 14px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+h1, h2 { margin: 0; }
+
+input[type="text"], select {
+  font: inherit;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 7px 9px;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus, select:focus, button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border-radius: var(--radius);
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--accent-text);
+  padding: 7px 14px;
+}
+
+button:hover:not(:disabled) { background: var(--accent-hover); border-color: var(--accent-hover); }
+button:disabled { opacity: 0.5; cursor: default; }
+
+button.secondary {
+  background: transparent;
+  color: var(--accent);
+}
+button.secondary:hover:not(:disabled) { background: var(--surface); }
+
+button.small { padding: 4px 9px; font-size: 12px; }
+
+button.link {
+  border: none;
+  background: none;
+  color: var(--accent);
+  padding: 0;
+  font-size: 12px;
+}
+button.link:hover:not(:disabled) { background: none; text-decoration: underline; }
+
+a { color: var(--accent); }
+
+code {
+  font: 12px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}

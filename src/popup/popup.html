@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Salesforce Record Lookup</title>
+  <link rel="stylesheet" href="../shared.css">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <h1>Salesforce Record Lookup</h1>
+    <button id="open-settings" class="icon-button" type="button" title="Settings" aria-label="Settings">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M19.14 12.94a7.07 7.07 0 0 0 0-1.88l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.03 7.03 0 0 0-1.63-.94l-.36-2.54A.5.5 0 0 0 13.9 2.4h-3.84a.5.5 0 0 0-.49.42l-.36 2.54c-.59.24-1.13.56-1.63.94l-2.39-.96a.5.5 0 0 0-.6.22L2.67 8.88a.5.5 0 0 0 .12.64l2.03 1.58a7.07 7.07 0 0 0 0 1.88l-2.03 1.58a.5.5 0 0 0-.12.64l1.92 3.32c.13.22.39.3.6.22l2.39-.96c.5.38 1.04.7 1.63.94l.36 2.54c.04.24.25.42.49.42h3.84c.24 0 .45-.18.49-.42l.36-2.54c.59-.24 1.13-.56 1.63-.94l2.39.96c.22.08.47 0 .6-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58ZM12 15.6a3.6 3.6 0 1 1 0-7.2 3.6 3.6 0 0 1 0 7.2Z"/></svg>
+    </button>
+  </header>
+
+  <div id="org-row" class="org-row" hidden>
+    <label for="org">Org</label>
+    <select id="org"></select>
+    <button id="save-org" class="secondary small" type="button" hidden>Save org</button>
+  </div>
+
+  <p id="no-org" class="notice" hidden>
+    Open this from a tab in your Salesforce org, or add an org in
+    <a href="#" id="no-org-settings">Settings</a>.
+  </p>
+
+  <form id="lookup-form" autocomplete="off">
+    <input id="query" type="text" spellcheck="false" autofocus
+           aria-label="Record ID, Salesforce URL, or search term"
+           placeholder="Record ID, Salesforce URL, or search term">
+    <div id="preview" class="preview" aria-live="polite" hidden></div>
+    <div class="actions">
+      <button id="primary" type="submit" disabled>Open</button>
+      <button id="search-instead" class="secondary" type="button" hidden>Search instead</button>
+    </div>
+    <p class="hint">Enter to open. Shift+Enter to search.</p>
+  </form>
+
+  <section id="recent-section" hidden>
+    <div class="section-head">
+      <h2>Recent</h2>
+      <button id="clear-history" class="link" type="button">Clear</button>
+    </div>
+    <ul id="recent"></ul>
+  </section>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
